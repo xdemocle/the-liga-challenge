@@ -1,12 +1,12 @@
 import { createContext, ReactNode } from 'react';
-import { dictionary } from '../data';
+import { DICTIONARY } from '../constants';
 
 export interface DictionaryContextProps {
   [key: string]: string;
 }
 
 export const DictionaryContext =
-  createContext<DictionaryContextProps>(dictionary);
+  createContext<DictionaryContextProps>(DICTIONARY);
 
 interface DictionaryProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ interface DictionaryProps {
 
 const DictionaryProvider = ({ children }: DictionaryProps) => {
   return (
-    <DictionaryContext.Provider value={dictionary}>
+    <DictionaryContext.Provider value={DICTIONARY}>
       {children}
     </DictionaryContext.Provider>
   );

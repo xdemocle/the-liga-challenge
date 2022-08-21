@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import pkg from '../package.json';
 import App from './app';
 import DictionaryProvider from './context/dictionary';
+import TeamProvider from './context/teams';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStyle } from './styles';
 
@@ -12,9 +15,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    <DictionaryProvider>
-      <App />
-    </DictionaryProvider>
+    <BrowserRouter basename={pkg.homepage}>
+      <DictionaryProvider>
+        <TeamProvider>
+          <App />
+        </TeamProvider>
+      </DictionaryProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

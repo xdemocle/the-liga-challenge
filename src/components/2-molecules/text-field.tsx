@@ -1,35 +1,54 @@
-import { ReactNode } from 'react';
+import { ReactNode, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 
 interface TextFieldProps {
+  id?: string;
   placeholder: string;
+  onChange?: (e: SyntheticEvent) => void;
   prepend?: ReactNode;
+  type?: string;
 }
 
 const FieldStyled = styled.div`
+  position: relative;
   display: block;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-  padding: 80px 0 40px 0;
 `;
 
 const InputStyled = styled.input`
   display: block;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-  padding: 80px 0 40px 0;
+  padding: 16px 16px 16px 52px;
+  border-radius: 30px;
+  background-color: #f7f7f7;
+  border: none;
+  font-size: 14px;
+  color: #6e7a83;
+  width: 100%;
 `;
 
 const PrependStyled = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
   display: block;
+  line-height: 16px;
 `;
 
-const TextField = ({ placeholder, prepend }: TextFieldProps) => {
+const TextField = ({
+  id,
+  placeholder,
+  onChange,
+  prepend,
+  type = 'text'
+}: TextFieldProps) => {
   return (
     <FieldStyled>
-      <InputStyled placeholder={placeholder} />
+      <InputStyled
+        id={id}
+        placeholder={placeholder}
+        onChange={onChange}
+        type={type}
+      />
       <PrependStyled>{prepend}</PrependStyled>
     </FieldStyled>
   );

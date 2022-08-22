@@ -29,14 +29,14 @@ const ImgStyled = styled.img`
 `;
 
 const ContentStyled = styled.div`
-  padding: 0 10px 44px 10px;
+  padding: 10px 10px 44px 10px;
   margin: 23% 16px 200px 16px;
   border-radius: 6px;
   box-shadow: 0 2px 4px 0 #e2e4e5;
   background: #fff;
 
   @media ${device.laptop} {
-    padding: 0 66px 44px 66px;
+    padding: 36px 41px;
     margin: 23% 127px 200px 127px;
   }
 `;

@@ -1,60 +1,58 @@
-import styled from 'styled-components';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import Loader from '../2-molecules/loader';
-import TextField from '../2-molecules/text-field';
-import { ReactComponent as LensIconSvg } from '../../assets/icons/lens.svg';
-import { Team } from '../../types';
+import TeamHeader from '../3-organisms/team-header';
+import TeamTable from '../3-organisms/team-table';
+import { Player, Team } from '../../types';
 
 interface TeamTemplateProps {
-  id?: string;
   dictionary: Record<string, string>;
   team?: Team;
   loading: boolean;
 }
 
-const RootStyled = styled.div`
-  display: block;
-`;
+const TeamTemplate = ({ dictionary, loading, team }: TeamTemplateProps) => {
+  const [searchNeedle, setSearchNeedle] = useState('');
+  const [playersList, setPlayersList] = useState(team?.squad || []);
 
-const HeaderStyled = styled.div`
-  display: block;
-  text-align: center;
-  padding: 43px 29px;
-`;
+  const getFilteredSquad = (players: Player[]): Player[] => {
+    const searchNeedleUppercase = searchNeedle.toUpperCase();
 
-const TitleStyled = styled.span`
-  font-size: 28px;
-  font-weight: 900;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 0.93;
-  letter-spacing: normal;
-  color: #3e4b54;
-`;
+    return players.filter((player: Player) => {
+      return player.name.toUpperCase().search(searchNeedleUppercase) !== -1;
+    });
+  };
 
-const MainStyled = styled.div`
-  display: block;
-`;
+  const onChangeTextFieldHandler = (e: SyntheticEvent) =>
+    setSearchNeedle((e.target as HTMLInputElement).value);
 
-const TeamTemplate = ({ dictionary, id, loading, team }: TeamTemplateProps) => {
+  useEffect(() => {
+    team?.squad && setPlayersList(team.squad);
+  }, [team]);
+
+  useEffect(() => {
+    if (team?.squad) {
+      setPlayersList(getFilteredSquad(team.squad));
+    }
+  }, [searchNeedle]);
+
   return (
-    <RootStyled>
+    <>
       {!loading && (
-        <HeaderStyled>
-          <TextField placeholder="Search" prepend={<LensIconSvg />} />
-          <TitleStyled>{team?.name || dictionary.teamNoTeamName}</TitleStyled>
-        </HeaderStyled>
+        <TeamHeader
+          team={team}
+          dictionary={dictionary}
+          onSearchChange={onChangeTextFieldHandler}
+        />
       )}
 
-      <MainStyled>
+      <div>
         {loading ? (
           <Loader />
         ) : (
-          <>
-            TeamTemplate: {id} {JSON.stringify(team)}
-          </>
+          <TeamTable dictionary={dictionary} squad={playersList} />
         )}
-      </MainStyled>
-    </RootStyled>
+      </div>
+    </>
   );
 };
 

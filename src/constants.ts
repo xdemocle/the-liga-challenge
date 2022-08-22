@@ -14,5 +14,9 @@ export const DICTIONARY = {
   listColumnPosition: 'Position',
   listColumnAge: 'Age',
   listColumnSeeMore: 'See More',
-  teamNoTeamName: 'No team name'
+  teamNoTeamName: 'No team name',
+  teamTableHeaderName: 'Name',
+  teamTableHeaderNationality: 'Nationality',
+  teamTableHeaderPosition: 'Position',
+  teamTableHeaderAge: 'Age'
 };

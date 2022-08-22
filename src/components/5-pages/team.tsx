@@ -20,14 +20,7 @@ const TeamPage = () => {
     id && setTeam(getTeam(id));
   }, [id, teams]);
 
-  return (
-    <TeamTemplate
-      dictionary={dictionary}
-      id={id}
-      team={team}
-      loading={loading}
-    />
-  );
+  return <TeamTemplate dictionary={dictionary} team={team} loading={loading} />;
 };
 
 export default TeamPage;

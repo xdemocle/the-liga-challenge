@@ -44,7 +44,6 @@ const TeamTemplate = ({ dictionary, loading, team }: TeamTemplateProps) => {
           onSearchChange={onChangeTextFieldHandler}
         />
       )}
-
       <div>
         {loading ? (
           <Loader />

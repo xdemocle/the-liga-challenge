@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   @media ${device.tablet} {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 `;
 
@@ -44,7 +44,7 @@ const Column = styled.div`
   margin-top: 22px;
 
   @media ${device.tablet} {
-    width: 70%;
+    width: 50%;
     margin-top: 0;
   }
 `;

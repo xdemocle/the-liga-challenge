@@ -48,6 +48,10 @@ const TeamTable = ({ dictionary, squad }: TeamTableProps) => {
     });
   };
 
+  const onClickSeeMoreHandler = () => {
+    setIndex(index + limit);
+  };
+
   useEffect(() => {
     setPlayers(getProgressiveList(squad, index));
   }, [squad, index, sort]);
@@ -85,8 +89,8 @@ const TeamTable = ({ dictionary, squad }: TeamTableProps) => {
       })}
 
       <ButtonTextWrapper>
-        {index + 1 < players.length && (
-          <ButtonText onClick={() => setIndex(index + limit)}>
+        {index + limit < squad.length && (
+          <ButtonText onClick={onClickSeeMoreHandler}>
             {dictionary.listColumnSeeMore}
           </ButtonText>
         )}

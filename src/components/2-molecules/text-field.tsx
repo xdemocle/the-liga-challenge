@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface TextFieldProps {
   id?: string;
-  placeholder: string;
+  placeholder?: string;
   onChange?: (e: SyntheticEvent) => void;
   prepend?: ReactNode;
   type?: string;
@@ -48,6 +48,7 @@ const TextField = ({
         placeholder={placeholder}
         onChange={onChange}
         type={type}
+        data-testid="textfield1"
       />
       <PrependStyled>{prepend}</PrependStyled>
     </FieldStyled>

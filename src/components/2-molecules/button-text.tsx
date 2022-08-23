@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ButtonTextProps {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ButtonTextStyled = styled.button`

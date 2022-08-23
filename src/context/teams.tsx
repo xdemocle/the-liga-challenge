@@ -3,8 +3,11 @@ import {
   Dispatch,
   ReactNode,
   SetStateAction,
+  useEffect,
   useState
 } from 'react';
+import { SPANISH_FIRST_DIVISION_ID } from '../constants';
+import useQuery from '../hooks/use-query';
 import { Team } from '../types';
 
 export interface TeamContextProps {
@@ -28,6 +31,30 @@ const TeamProvider = ({ children }: TeamProps) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [teams, setTeams] = useState<Team[]>([]);
+
+  const client = useQuery();
+
+  const getTeams = async () => {
+    let response;
+
+    setLoading(true);
+
+    try {
+      response = await client.get(
+        `competitions/${SPANISH_FIRST_DIVISION_ID}/teams`
+      );
+    } catch (error) {
+      setError('Network error!');
+      console.error(error);
+    }
+
+    setTeams(response?.data.teams);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getTeams();
+  }, []);
 
   return (
     <TeamContext.Provider

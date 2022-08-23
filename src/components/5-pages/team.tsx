@@ -6,13 +6,17 @@ import useDictionary from '../../hooks/use-dictionary';
 import useTeams from '../../hooks/use-team';
 import { Team } from '../../types';
 
-const TeamPage = () => {
+interface TeamPageProps {
+  injectedId?: string | number;
+}
+
+const TeamPage = ({ injectedId }: TeamPageProps) => {
   const dictionary = useDictionary();
-  const { id } = useParams();
+  const { id = injectedId } = useParams();
   const { teams, loading } = useTeams();
   const [team, setTeam] = useState<Team>();
 
-  const getTeam = (id: string) => {
+  const getTeam = (id: number | string) => {
     return find(teams, { id: Number(id) });
   };
 

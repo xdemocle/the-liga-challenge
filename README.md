@@ -15,7 +15,7 @@ REACT_APP_FOOTBALL_DATA_TOKEN=<Your football-data.org API token>
 ```bash
 npm install
 npm run proxy
-npm start
+npm start // in a new terminal
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

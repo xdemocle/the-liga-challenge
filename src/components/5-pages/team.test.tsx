@@ -25,11 +25,11 @@ test('renders team page and App data', async () => {
     </RenderWithProviders>
   );
 
-  await waitFor(() => getByText(/Athletic Club/i));
-
   // The mock Team name
+  await waitFor(() => getByText(/Athletic Club/i));
   expect(getByText(/Athletic Club/i)).toBeInTheDocument();
 
   // The mock Player name
+  await waitFor(() => getByText(/Unai Simón/i));
   expect(getByText(/Unai Simón/i)).toBeInTheDocument();
 });

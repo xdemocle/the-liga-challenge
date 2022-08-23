@@ -13,8 +13,8 @@ const LoaderStyled = styled.div`
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    border: 6px solid #46555e;
-    border-color: #46555e transparent #46555e transparent;
+    border: 6px solid #6e7a83;
+    border-color: #6e7a83 transparent #6e7a83 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
 

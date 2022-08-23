@@ -6,6 +6,12 @@ The Liga Challenge: be always up to date when it comes to the football market in
 
 To bootstrap the project follow the steps below:
 
+Create a file `.env.local` in the root of the project with below content:
+
+```bash
+REACT_APP_FOOTBALL_DATA_TOKEN=<Your football-data.org API token>
+```
+
 ```bash
 npm install
 npm run proxy
@@ -16,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Notes
 
-This project is using football-data.org API with CORS limitations, for this reason we run an extra command for the proxy like explained below in *Available Scripts* and in *Quickstart*.
+This project is using football-data.org API with CORS limitations, for this reason we run an extra command for the proxy like explained below in _Available Scripts_ and in _Quickstart_.
 
 ## Disclaimer
 
